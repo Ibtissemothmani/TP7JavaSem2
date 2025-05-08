@@ -1,30 +1,36 @@
-import java.util.Scanner;
 public class ex1 {
-        public static int Lecture() {
-            Scanner scanner = new Scanner(System.in);
-            int n;
-            do {
-                System.out.println("Entrer un entier strictement positif :");
-                n = scanner.nextInt();
-                if (n <= 0) {
-                    System.out.println("L'entier doit être strictement positif !");
-                }
-            } while (n <= 0);
-            return n;
+    public static double somme(double[] tab) {
+        double sum = 0;
+        for (double num : tab) {
+            sum += num;
         }
-    
-        public static int Compter(int n) {
-            int count = 0;
-            while (n != 0) {
-                n /= 10;
-                count++;
-            }
-            return count;
-        }
-    
-        public static void main(String[] args) {
-            int nombre = Lecture();
-            int nbChiffres = Compter(nombre);
-            System.out.println("Le nombre contient " + nbChiffres + " chiffre(s).");
+        return sum;
+    }
+    public static void incre(double[] tab, double valeur) {
+        for (int i = 0; i < tab.length; i++) {
+            tab[i] += valeur;
         }
     }
+    public static void affiche(double[] tab) {
+        System.out.print("[");
+        for (int i = 0; i < tab.length; i++) {
+            System.out.print(tab[i]);
+            if (i < tab.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+    public static void main(String[] args) {
+        double[] nombres = {1.5, 2.3, 4.7, 5.1};
+        
+        System.out.println("Tableau initial:");
+        affiche(nombres);
+        
+        System.out.println("Somme: " + somme(nombres));
+        
+        incre(nombres, 2.0);
+        System.out.println("Tableau après incrémentation de 2:");
+        affiche(nombres);
+    }
+}
